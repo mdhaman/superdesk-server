@@ -80,13 +80,14 @@ INSTALLED_APPS = [
     'apps.tasks',
     'apps.preferences',
     'apps.groups',
-    'apps.controlled_vocabulary.category'
+    'apps.controlled_vocabulary'
 ]
 
 RESOURCE_METHODS = ['GET', 'POST']
 ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
 EXTENDED_MEDIA_INFO = ['content_type', 'name', 'length']
 RETURN_MEDIA_AS_BASE64_STRING = False
+
 
 AMAZON_CONTAINER_NAME = os.environ.get('AMAZON_CONTAINER_NAME', '')
 AMAZON_ACCESS_KEY_ID = os.environ.get('AMAZON_ACCESS_KEY_ID', '')

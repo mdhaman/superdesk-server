@@ -9,13 +9,13 @@ category_schema = {
         'type': 'string',
         'unique': True,
         'required': True,
-        'minlength': 1,
-        'maxlength': 1
+        'regex': '^[a-zA-Z]{1}$'
     },
     'name': {
         'type': 'string',
         'unique': True,
         'required': True,
+        'minlength': 2
     },
     'description': {
         'type': 'string'
@@ -32,7 +32,3 @@ class CategoryService(BaseService):
     pass
 
 
-def init_app(app):
-    endpoint_name = 'categories'
-    service = CategoryService(endpoint_name, backend=superdesk.get_backend())
-    CategoryResource(endpoint_name, app=app, service=service)
