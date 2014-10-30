@@ -15,25 +15,6 @@ Feature: Category Resource
         Then we get response code 201
 
     @auth
-    Scenario: Update existing category
-        When we post to "categories"
-            """
-            {"name": "National", "code": "A"}
-            """
-        Then we get response code 201
-        When we post to "categories"
-            """
-            {"name": "Entertainment", "code": "Z"}
-            """
-        Then we get response code 201
-        When we post to "categories"
-            """
-            {"name": "Entertainment", "code": "Z"}
-            """
-        Then we get response code 201
-
-
-    @auth
     Scenario: Test category code validation
         When we post to "categories"
             """
