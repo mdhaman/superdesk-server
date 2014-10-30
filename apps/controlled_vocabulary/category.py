@@ -2,7 +2,7 @@
 
 from superdesk.resource import Resource
 from superdesk.services import BaseService
-import superdesk
+
 
 category_schema = {
     'code': {
@@ -30,5 +30,3 @@ class CategoryResource(Resource):
 
 class CategoryService(BaseService):
     pass
-
-
