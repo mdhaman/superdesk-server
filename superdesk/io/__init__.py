@@ -1,6 +1,6 @@
 """Superdesk IO"""
 from abc import ABCMeta, abstractmethod
-
+import superdesk
 import logging
 
 from superdesk.celery_app import celery
@@ -10,6 +10,7 @@ providers = {}
 allowed_providers = []
 logger = logging.getLogger(__name__)
 
+from .commands.remove_expired_content import RemoveExpiredContent
 from .commands.update_ingest import UpdateIngest
 from .commands.add_provider import AddProvider  # NOQA
 
@@ -28,8 +29,12 @@ def register_provider(type, provider):
     allowed_providers.append(type)
 
 
+superdesk.privilege(name='ingest_providers', label='Ingest Channels', description='User can maintain Ingest Channels.')
+
+
 @celery.task()
 def fetch_ingest():
+    RemoveExpiredContent().run()
     UpdateIngest().run()
 
 
